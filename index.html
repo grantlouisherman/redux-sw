@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head>
+</head>
+<body>
+  <script src="./sw.js">
+  </script>
+  <script src="./globalState.js">
+  </script>
+  <div>Hi</div>
+  <button id="testButton" type="button" name="button">SEND MESSAGE</button>
+  <script src="eventListener.js">
+  </script>
+  <script type="text/javascript">
+  F = new State({})
+  async function fetchData(url){
+    let response =  await fetch(url)
+    let data = await response.json()
+    return data
+  }
+
+  F.bindActionCreator('MOCK', 'FETCH', fetchData)
+
+  F.RootReducer('MOCK', 'FETCH', 'http://localhost:3000/posts/1')
+  </script>
+</body>
